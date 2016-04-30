@@ -6,16 +6,20 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.js"></script>
-  <link rel="stylesheet" type="text/css" href="../external/tooltipster.css" />
-  <script src="../external/jquery.tooltipster.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/tooltipster.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.js"></script>
   <script src="../src/angular-tooltipster.js"></script>
   <script>
     var app = angular.module('app', ['tooltipster']);
+    app.controller('test', function ($scope) {
+      $scope.testVariable = "hello";
+    });
   </script>
 </head>
-<body ng-app="app">
+<body ng-app="app" data-ng-controller="test">
   <div>
-    <span tooltip-title="Test">hover</span>
+    <span tooltip-title="Test">hover</span> <BR />
+    <span tooltip-title="{{testVariable}}">hover</span>
   </div>
 </body>
 </html>

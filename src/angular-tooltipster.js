@@ -4,29 +4,24 @@
             restrict: 'A',
             scope: {
                 tooltipTitle: '@',
-                tooltipTitleVariable: '=',
                 tooltipOptions: "="
             },
             link: function(scope, element, attrs) {
-                var isTooltipDynamicVariable = (scope.tooltipTitleVariable !== undefined);
 
-                if (!scope.tooltipTitle && !isTooltipDynamicVariable) {
+                if (!scope.tooltipTitle) {
                     return;
                 }
                 
                 var tooltipOptions = scope.tooltipOptions || {};
                 var message = scope.tooltipTitle;
-                if (isTooltipDynamicVariable) {
-                    message = scope.tooltipTitleVariable;
-                    scope.$watch('tooltipTitleVariable', function(value) {
-                        element.tooltipster('content', value);
-                        if (!value) {
-                            element.tooltipster('disable');
-                        } else {
-                            element.tooltipster('enable');
-                        }
-                    });
-                }
+                attrs.$observe("tooltipTitle", function (value) {
+                    element.tooltipster('content', value);
+                    if (!value) {
+                        element.tooltipster('disable');
+                    } else {
+                        element.tooltipster('enable');
+                    }
+                });
 
                 tooltipOptions.content = message;
                 element.tooltipster(tooltipOptions);

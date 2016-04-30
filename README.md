@@ -13,7 +13,7 @@ Views:
 <span tooltip-title="Test">if value is not changed or </span>
 ```
 ```
-<span tooltip-title tooltip-title-variable="dynamicScopeVariable"> if tooltip value is variable and not static text</span>
+<span tooltip-title="{{dynamicScopeVariable}}"> if tooltip value is variable and not static text</span>
 ```
 
 ## Options:
