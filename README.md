@@ -23,7 +23,7 @@ use attribute tooltip-options, </br>
 in the controller set options defined in https://github.com/iamceege/tooltipster, for example:
 
 ```
-$scope.tooltipOptions = {} </br>
+$scope.tooltipOptions = {}
 $scope.tooltipOptions.contentAsHTML = true
 ```
 
