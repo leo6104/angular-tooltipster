@@ -7,14 +7,11 @@
                 tooltipOptions: "="
             },
             link: function(scope, element, attrs) {
-
-                if (!scope.tooltipTitle) {
-                    return;
-                }
-                
                 var tooltipOptions = scope.tooltipOptions || {};
-                var message = scope.tooltipTitle;
-                attrs.$observe("tooltipTitle", function (value) {
+                tooltipOptions.content = scope.tooltipTitle;
+                element.tooltipster(tooltipOptions);
+
+                scope.$watch("tooltipTitle", function (value) {
                     element.tooltipster('content', value);
                     if (!value) {
                         element.tooltipster('disable');
@@ -23,12 +20,9 @@
                     }
                 });
 
-                tooltipOptions.content = message;
-                element.tooltipster(tooltipOptions);
-
                 scope.$on("$destroy", function () {
                     element.tooltipster('destroy');
-                })
+                });
             }
 	    }	
 	});
